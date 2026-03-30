@@ -5,8 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.lang.ScopedValue;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
-public interface HotelRepository extends JpaRepository<Hotel,Long> {
+
+@Repository
+public interface HotelRepository extends JpaRepository<Hotel, Long> {
+
     List<Hotel> findByLocationContainingIgnoreCase(String location);
-
 }

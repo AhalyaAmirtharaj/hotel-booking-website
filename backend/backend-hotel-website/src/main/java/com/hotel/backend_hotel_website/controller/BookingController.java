@@ -8,25 +8,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/bookings")
 @CrossOrigin(origins = "http://localhost:5173")
 public class BookingController {
+
     @Autowired
     private BookingService bookingService;
 
     @PostMapping
-    public Booking book(@RequestBody BookingRequestDTO dto) {
+    public Booking bookRoom(@RequestBody BookingRequestDTO dto) {
         return bookingService.bookRoom(dto);
     }
 
     @PutMapping("/{id}/cancel")
-    public Booking cancel(@PathVariable Long id) {
+    public Booking cancelBooking(@PathVariable Long id) {
         return bookingService.cancelBooking(id);
     }
 
     @GetMapping("/user/{userId}")
-    public List<Booking> getBookings(@PathVariable Long userId) {
+    public List<Booking> getMyBookings(@PathVariable Long userId) {
         return bookingService.getMyBookings(userId);
     }
 }
